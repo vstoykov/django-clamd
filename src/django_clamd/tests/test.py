@@ -5,7 +5,9 @@ import clamd
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_clamd.tests.settings')
 
 import django
-django.setup()
+if hasattr(django, 'setup'):
+    # Django >= 1.7
+    django.setup()
 
 from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
