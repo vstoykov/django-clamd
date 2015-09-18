@@ -22,10 +22,10 @@ setup(
     ],
     install_requires=(
         "clamd",
+        "Django",
     ),
     tests_require=(
         "nose==1.3.7",
-        "django==1.8.4",
     ),
     test_suite='nose.collector',
     zip_safe=True,
