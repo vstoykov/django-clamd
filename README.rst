@@ -38,3 +38,8 @@ You can configure how to connect to Clamd. Default values are: ::
     CLAMD_USE_TCP = False
     CLAMD_TCP_SOCKET = 3310
     CLAMD_TCP_ADDR = '127.0.0.1'
+
+
+License
+-------
+`django-clamd` is released as open-source software under the LGPL license.
