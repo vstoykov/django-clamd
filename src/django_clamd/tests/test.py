@@ -2,7 +2,7 @@ import os
 import clamd
 
 # Ensure we can import django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_clamd.tests.settings')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'django_clamd.tests.settings'
 
 import django
 if hasattr(django, 'setup'):
