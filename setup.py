@@ -17,6 +17,10 @@ setup(
     url="https://github.com/vstoykov/django-clamd",
     package_dir={'': 'src'},
     packages=find_packages('src', exclude="tests"),
+    package_data={'django_clamd': [
+        'locale/*/LC_MESSAGES/*.po',
+        'locale/*/LC_MESSAGES/*.mo',
+    ]},
     classifiers=[
         "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
     ],
@@ -28,6 +32,6 @@ setup(
         "nose==1.3.7",
     ),
     test_suite='nose.collector',
-    zip_safe=True,
-    include_package_data=False,
+    zip_safe=False,
+    include_package_data=True,
 )
