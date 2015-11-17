@@ -4,6 +4,27 @@ django-clamd
 This project integrates python-clamd with Django for easy scanning files for viruses on upload
 
 
+Install
+-------
+
+Currently django-clamd can be downloaded only from Github and installed with: ::
+
+    python setup.py install
+
+Or directly with pip: ::
+
+    pip install git+https://github.com/vstoykov/django-clamd.git
+
+
+Aditioanlly if you want translations to work you need to add it to installed apps. ::
+
+    INSTALLED_APPS = (
+    ...
+    'django_clamd',
+    ...
+    )
+
+
 Usage
 -----
 
