@@ -40,6 +40,15 @@ You can configure how to connect to Clamd. Default values are: ::
     CLAMD_TCP_ADDR = '127.0.0.1'
 
 
+You also can disable virus scanning for development with: ::
+
+    CLAMD_ENABLED = False
+
+
+Note: This is primary for make it easy running a project on development without
+the need of installing Clamd on devlopment machine.
+
+
 License
 -------
 `django-clamd` is released as open-source software under the LGPL license.
