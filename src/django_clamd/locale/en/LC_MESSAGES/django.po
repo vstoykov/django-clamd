@@ -1,0 +1,22 @@
+# django-clamd
+# Copyright (C) 2015 Venelin Stoykov
+# This file is distributed under the same license as the django-clamd package.
+# Venelin Stoykov <vkstoykov@gmail.com>, 2015.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: django-clamd\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-17 12:27+0200\n"
+"PO-Revision-Date: 2015-11-17 12:27+0200\n"
+"Last-Translator: Venelin Stoykov <vkstoykov@gmail.com>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: validators.py:20
+msgid "File is infected with mallware"
+msgstr "File is infected with mallware"
