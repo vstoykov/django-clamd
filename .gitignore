@@ -1,4 +1,5 @@
 *.py[co]
 *.egg*
+.tox
 dist
 build
