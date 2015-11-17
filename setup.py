@@ -22,7 +22,7 @@ setup(
     ],
     install_requires=(
         "clamd",
-        "Django",
+        "Django>=1.4",
     ),
     tests_require=(
         "nose==1.3.7",
