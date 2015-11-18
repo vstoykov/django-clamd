@@ -7,16 +7,22 @@ This project integrates python-clamd with Django for easy scanning files for vir
 Install
 -------
 
-Currently django-clamd can be downloaded only from Github and installed with: ::
+Currently django-clamd can be downloaded only from Github and installed with:
+
+.. code-block:: bash
 
     python setup.py install
 
-Or directly with pip: ::
+Or directly with pip:
+
+.. code-block:: bash
 
     pip install git+https://github.com/vstoykov/django-clamd.git
 
 
-Aditioanlly if you want translations to work you need to add it to installed apps. ::
+Aditioanlly if you want translations to work you need to add it to installed apps.
+
+.. code-block:: python
 
     INSTALLED_APPS = (
         ...
@@ -28,7 +34,9 @@ Aditioanlly if you want translations to work you need to add it to installed app
 Usage
 -----
 
-You can use it in forms::
+You can use it in forms:
+
+.. code-block:: python
 
     from django import forms
     from django_clamd.validators import validate_file_infection
@@ -37,7 +45,9 @@ You can use it in forms::
         upload_file = forms.FileField(validators=[validate_file_infection])
 
 
-Or you can add it as validator directly in your model::
+Or you can add it as validator directly in your model:
+
+.. code-block:: python
 
     from django.db import models
     from django_clamd.validators import validate_file_infection
@@ -53,7 +63,9 @@ and also when create ModelForm's for that model.
 Configuration
 -------------
 
-You can configure how to connect to Clamd. Default values are: ::
+You can configure how to connect to Clamd. Default values are:
+
+.. code-block:: python
 
     CLAMD_SOCKET = '/var/run/clamav/clamd.ctl'
     CLAMD_USE_TCP = False
@@ -61,7 +73,9 @@ You can configure how to connect to Clamd. Default values are: ::
     CLAMD_TCP_ADDR = '127.0.0.1'
 
 
-You also can disable virus scanning for development with: ::
+You also can disable virus scanning for development with:
+
+.. code-block:: python
 
     CLAMD_ENABLED = False
 
