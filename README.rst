@@ -72,6 +72,12 @@ You can configure how to connect to Clamd. Default values are:
     CLAMD_TCP_SOCKET = 3310
     CLAMD_TCP_ADDR = '127.0.0.1'
 
+Note: When you are running on Fedora or CentOS and :code:`clamav-scanner`
+package is installed then default value for :code:`CLAMD_SOCKET` is:
+
+.. code-block:: python
+
+    CLAMD_SOCKET = '/var/run/clamd.scan/clamd.sock'
 
 You also can disable virus scanning for development with:
 
