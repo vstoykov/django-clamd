@@ -16,7 +16,7 @@ def validate_file_infection(file):
     file.seek(0)
     scanner = get_scanner()
     result = scanner.instream(file)
-    if result:
+    if result and result['stream'][0] == 'FOUND':
         raise ValidationError(_('File is infected with mallware'), code='infected')
     # Return file pointer at initial state
     file.seek(0)
