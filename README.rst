@@ -7,13 +7,19 @@ This project integrates python-clamd with Django for easy scanning files for vir
 Install
 -------
 
-Currently django-clamd can be downloaded only from Github and installed with:
+From PyPi with pip:
 
 .. code-block:: bash
 
-    python setup.py install
+    pip install django-clamd
 
-Or directly with pip:
+or
+
+.. code-block:: bash
+
+    easy_install django-clamd
+
+You can also install development version direclty from GitHub:
 
 .. code-block:: bash
 
