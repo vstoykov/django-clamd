@@ -20,9 +20,9 @@ if CLAMD_SOCKET is None:
 CLAMD_USE_TCP = getattr(_settings, 'CLAMD_USE_TCP', False)
 
 # Default ClamD TCP socket port
-CLAMD_TCP_SOCKET = getattr(_settings, 'CLAMD_TCP_PORT', 3310)
+CLAMD_TCP_SOCKET = getattr(_settings, 'CLAMD_TCP_SOCKET', 3310)
 # Default CLamd TCP socket addres
-CLAMD_TCP_ADDR = getattr(_settings, 'CLAMD_TCP_SOCKET', '127.0.0.1')
+CLAMD_TCP_ADDR = getattr(_settings, 'CLAMD_TCP_ADDR', '127.0.0.1')
 
 # Enable ClamD scanner. By default True. Set to False only for development.
 CLAMD_ENABLED = getattr(_settings, 'CLAMD_ENABLED', True)
