@@ -21,11 +21,11 @@ class VirusValidatorTestCase(TestCase):
 
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors, {
-            'upload_file': ['File is infected with mallware']
+            'upload_file': ['File is infected with malware.']
         })
 
     def test_has_not_virus(self):
-        uploaded_file = SimpleUploadedFile('some file.txt', 'File without viruses')
+        uploaded_file = SimpleUploadedFile('some file.txt', b'File without viruses')
         form = UploadForm(files={'upload_file': uploaded_file})
 
         self.assertTrue(form.is_valid())
