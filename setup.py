@@ -6,7 +6,7 @@ with open('README.rst') as readme:
 
 setup(
     name="django-clamd",
-    version='0.3.3',
+    version='0.4.0',
     author="Venelin Stoykov",
     author_email="vkstoykov@gmail.com",
     maintainer="Venelin Stoykov",
