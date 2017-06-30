@@ -11,6 +11,7 @@ if hasattr(django, 'setup'):
 
 from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django_clamd.validators import validate_file_infection
 from .forms import UploadForm
 
 
@@ -29,3 +30,26 @@ class VirusValidatorTestCase(TestCase):
         form = UploadForm(files={'upload_file': uploaded_file})
 
         self.assertTrue(form.is_valid())
+
+    def test_infinite_stream(self):
+
+        class InfiniteStream:
+            _read_bytes = 0
+            _pos = 0
+
+            def read(self, size):
+                self._pos += size
+                self._read_bytes += size
+                return b'A' * size
+
+            def seek(self, pos):
+                self._pos = pos
+
+            def tell(self):
+                return self._pos
+
+        stream = InfiniteStream()
+
+        validate_file_infection(stream)
+        self.assertGreaterEqual(stream._read_bytes, 5 * 1024 * 1024)
+        self.assertEqual(stream.tell(), 0)
