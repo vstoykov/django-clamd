@@ -17,6 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: validators.py:20
+#: validators.py:37
 msgid "File is infected with malware."
 msgstr "File is infected with malware."
+
+#: validators.py:32
+msgid "Malware scan could not completed. Please try again later."
+msgstr "Malware scan could not completed. Please try again later."

@@ -27,5 +27,8 @@ CLAMD_TCP_ADDR = getattr(_settings, 'CLAMD_TCP_ADDR', '127.0.0.1')
 # Enable ClamD scanner. By default True. Set to False only for development.
 CLAMD_ENABLED = getattr(_settings, 'CLAMD_ENABLED', True)
 
+# Fail in the event that ClamD cannot be contacted, or if the scan failed.
+CLAMD_FAIL_BY_DEFAULT = getattr(_settings, 'CLAMD_FAIL_BY_DEFAULT', False)
+
 if not _settings.DEBUG and not CLAMD_ENABLED:
     warnings.warn('You are running with DEBUG=False and CLAMD_ENABLED=False. This is probably due to missconfigurations.')

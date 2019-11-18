@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from django_clamd import get_scanner
-from .conf import CLAMD_ENABLED
+from .conf import CLAMD_ENABLED, CLAMD_FAIL_BY_DEFAULT
 
 
 logger = logging.getLogger(__name__)
@@ -27,6 +27,10 @@ def validate_file_infection(file):
         # Server is up. This means that the file is too big.
         logger.warn('The file is too large for ClamD to scan it. Bytes Read {}'.format(file.tell()))
         file.seek(0)
+        if CLAMD_FAIL_BY_DEFAULT:
+            raise ValidationError(
+                _('Malware scan could not completed. Please try again later.'),
+                code='incomplete')
         return
 
     if result and result['stream'][0] == 'FOUND':
