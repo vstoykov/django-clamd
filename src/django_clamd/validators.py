@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 def validate_file_infection(file):
     # If django-clamd is disabled (for debugging) then do not check the file.
     if not CLAMD_ENABLED:
-        warnings.warn('Runing clamd validator with CLAMD_ENABLED=False')
+        warnings.warn('Running clamd validator with CLAMD_ENABLED=False')
         return
     # Ensure file pointer is at begingin of the file
     file.seek(0)
