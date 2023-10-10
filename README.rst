@@ -86,6 +86,14 @@ package is installed then default value for :code:`CLAMD_SOCKET` is:
 
     CLAMD_SOCKET = '/var/run/clamd.scan/clamd.sock'
 
+By default, this package will *allow* a file if ClamD cannot be contacted or
+if the scan fails. If you want validation to fail in these instances, change
+:code:`CLAMD_FAIL_BY_DEFAULT`
+
+.. code-block:: python
+
+    CLAMD_FAIL_BY_DEFAULT = True
+
 You also can disable virus scanning for development with:
 
 .. code-block:: python
