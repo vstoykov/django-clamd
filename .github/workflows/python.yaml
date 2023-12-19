@@ -1,0 +1,39 @@
+name: Python CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    services:
+      clamav:
+        image: clamav/clamav:stable
+        ports:
+          - 3310
+
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: ["3.12", "3.11", "3.10", "3.9", "3.8", "3.7"]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install tox tox-gh-actions
+    - name: Run Tests
+      env:
+        CLAMD_USE_TCP: True
+        CLAMD_TCP_SOCKET: ${{ job.services.clamav.ports[3310] }}
+      run: tox

@@ -26,7 +26,10 @@ class VirusValidatorTestCase(TestCase):
         })
 
     def test_has_not_virus(self):
-        uploaded_file = SimpleUploadedFile('some file.txt', b'File without viruses')
+        uploaded_file = SimpleUploadedFile(
+            name='some file.txt',
+            content=b'File without viruses'
+        )
         form = UploadForm(files={'upload_file': uploaded_file})
 
         self.assertTrue(form.is_valid())
@@ -53,3 +56,10 @@ class VirusValidatorTestCase(TestCase):
         validate_file_infection(stream)
         self.assertGreaterEqual(stream._read_bytes, 5 * 1024 * 1024)
         self.assertEqual(stream.tell(), 0)
+
+    def test_with_None(self):
+        validate_file_infection(None)
+
+    def test_form_without_file(self):
+        form = UploadForm(files={'upload_file': None})
+        self.assertTrue(form.is_valid())
