@@ -1,0 +1,5 @@
+services:
+  clamav:
+    image: clamav/clamav:stable
+    ports:
+      - 3310

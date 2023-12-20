@@ -12,6 +12,8 @@ logger = logging.getLogger(__name__)
 
 
 def validate_file_infection(file):
+    if file is None:
+        return
     # If django-clamd is disabled (for debugging) then do not check the file.
     if not CLAMD_ENABLED:
         warnings.warn('Running clamd validator with CLAMD_ENABLED=False')
@@ -25,7 +27,7 @@ def validate_file_infection(file):
         # Ping the server if it fails than the server is down
         scanner.ping()
         # Server is up. This means that the file is too big.
-        logger.warn('The file is too large for ClamD to scan it. Bytes Read {}'.format(file.tell()))
+        logger.warning('The file is too large for ClamD to scan it. Bytes Read {}'.format(file.tell()))
         file.seek(0)
         if CLAMD_FAIL_BY_DEFAULT:
             raise ValidationError(

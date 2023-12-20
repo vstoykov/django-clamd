@@ -1,4 +1,4 @@
-
+import os
 
 DATABASES = {
     'default': {
@@ -15,3 +15,9 @@ INSTALLED_APPS = [
 SECRET_KEY = 'Anti virus scanner'
 
 LANGUAGE_CODE = 'en'
+
+USE_TZ = True
+
+
+CLAMD_USE_TCP = bool(os.getenv("CLAMD_USE_TCP") or False)
+CLAMD_TCP_SOCKET = int(os.getenv("CLAMD_TCP_SOCKET") or 3310)
