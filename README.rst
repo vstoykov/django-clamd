@@ -40,6 +40,7 @@ Aditioanlly if you want translations to work you need to add it to installed app
 Additionally if you are using Ubuntu, in order for django-clamd to work install clamav-daemon.
 
 .. code-block:: bash
+
     sudo apt-get install clamav-daemon
 
 
