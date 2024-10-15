@@ -19,14 +19,14 @@ or
 
     easy_install django-clamd
 
-You can also install development version direclty from GitHub:
+You can also install development version directly from GitHub:
 
 .. code-block:: bash
 
     pip install git+https://github.com/vstoykov/django-clamd.git
 
 
-Aditioanlly if you want translations to work you need to add it to installed apps.
+Additionally if you want translations to work you need to add it to installed apps.
 
 .. code-block:: python
 
