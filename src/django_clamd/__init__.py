@@ -6,6 +6,6 @@ def get_scanner():
     from . import conf
 
     if conf.CLAMD_USE_TCP:
-        return clamd.ClamdNetworkSocket(conf.CLAMD_TCP_ADDR, conf.CLAMD_TCP_SOCKET)
+        return clamd.ClamdNetworkSocket(conf.CLAMD_TCP_ADDR, conf.CLAMD_TCP_SOCKET, timeout=conf.CLAMD_TIMEOUT)
 
-    return clamd.ClamdUnixSocket(conf.CLAMD_SOCKET)
+    return clamd.ClamdUnixSocket(conf.CLAMD_SOCKET, timeout=conf.CLAMD_TIMEOUT)

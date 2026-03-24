@@ -21,8 +21,12 @@ CLAMD_USE_TCP = getattr(_settings, 'CLAMD_USE_TCP', False)
 
 # Default ClamD TCP socket port
 CLAMD_TCP_SOCKET = getattr(_settings, 'CLAMD_TCP_SOCKET', 3310)
+
 # Default CLamd TCP socket addres
 CLAMD_TCP_ADDR = getattr(_settings, 'CLAMD_TCP_ADDR', '127.0.0.1')
+
+# Timeout for ClamD socket connection in seconds.
+CLAMD_TIMEOUT = getattr(_settings, 'CLAMD_TIMEOUT', None)
 
 # Enable ClamD scanner. By default True. Set to False only for development.
 CLAMD_ENABLED = getattr(_settings, 'CLAMD_ENABLED', True)
