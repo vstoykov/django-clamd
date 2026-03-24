@@ -2,4 +2,10 @@ services:
   clamav:
     image: clamav/clamav:stable
     ports:
-      - 3310
+      - 127.0.0.1:3310:3310
+    environment:
+      - CLAMD_CONF_TCPAddr=0.0.0.0
+      - CLAMD_CONF_TCPSocket=3310
+      - CLAMD_CONF_EnableShutdownCommand=no
+      - CLAMD_CONF_EnableReloadCommand=no
+      - CLAMD_CONF_ConcurrentDatabaseReload=no
