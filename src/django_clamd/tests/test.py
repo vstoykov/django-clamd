@@ -10,6 +10,7 @@ if hasattr(django, 'setup'):
     django.setup()
 
 from django.test import TestCase
+from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django_clamd.validators import validate_file_infection
 from .forms import UploadForm
@@ -56,6 +57,17 @@ class VirusValidatorTestCase(TestCase):
         validate_file_infection(stream)
         self.assertGreaterEqual(stream._read_bytes, 5 * 1024 * 1024)
         self.assertEqual(stream.tell(), 0)
+
+    def test_validate_file_infection_limit_exceeded(self):
+        uploaded_file = SimpleUploadedFile(
+            name='large_file.txt',
+            content=b'A' * (11 * 1024 * 1024)
+        )
+        with self.assertRaises(ValidationError) as cm:
+            validate_file_infection(uploaded_file)
+
+        self.assertEqual(cm.exception.code, 'limit_exceeded_maxscansize')
+        self.assertEqual(cm.exception.message, 'Malware scan could not be completed.')
 
     def test_with_None(self):
         validate_file_infection(None)

@@ -19,6 +19,9 @@ jobs:
         image: clamav/clamav:stable
         ports:
           - 3310
+        env:
+          CLAMD_CONF_AlertExceedsMax: "yes"
+          CLAMD_CONF_MaxScanSize: 10M
 
     strategy:
       max-parallel: 4
