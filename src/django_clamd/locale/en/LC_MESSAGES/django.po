@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: django-clamd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-17 12:27+0200\n"
+"POT-Creation-Date: 2026-06-24 12:25+1000\n"
 "PO-Revision-Date: 2016-12-07 16:15+0100\n"
 "Last-Translator: Ewald Moitzi\n"
 "Language-Team: English\n"
@@ -17,10 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: validators.py:37
+#: validators.py:47
 msgid "File is infected with malware."
 msgstr "File is infected with malware."
 
-#: validators.py:32
-msgid "Malware scan could not completed. Please try again later."
-msgstr "Malware scan could not completed. Please try again later."
+#: validators.py:35
+msgid "Malware scan could not be completed. Please try again later."
+msgstr "Malware scan could not be completed. Please try again later."
+
+#: validators.py:44
+msgid "Malware scan could not be completed."
+msgstr "Malware scan could not be completed."

@@ -9,3 +9,5 @@ services:
       - CLAMD_CONF_EnableShutdownCommand=no
       - CLAMD_CONF_EnableReloadCommand=no
       - CLAMD_CONF_ConcurrentDatabaseReload=no
+      - CLAMD_CONF_AlertExceedsMax=yes
+      - CLAMD_CONF_MaxScanSize=10M

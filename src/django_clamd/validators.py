@@ -1,3 +1,4 @@
+import re
 import warnings
 import logging
 
@@ -31,11 +32,21 @@ def validate_file_infection(file):
         file.seek(0)
         if CLAMD_FAIL_BY_DEFAULT:
             raise ValidationError(
-                _('Malware scan could not completed. Please try again later.'),
+                _('Malware scan could not be completed. Please try again later.'),
                 code='incomplete')
         return
 
     if result and result['stream'][0] == 'FOUND':
+        # Check if the file was rejected by ClamD because it exceeded a config limit. If
+        # so, log the reason and raise a ValidationError with a specific code.
+        if match := re.match(r'^Heuristics\.Limits\.Exceeded(?:\.(\w+))?$', result['stream'][1]):
+            reason = match.group(1) or 'unknown'
+            logger.warning('The file was rejected by ClamD as it exceeded the "{}" config limit. Bytes Read {}'.format(reason, file.tell()))
+            raise ValidationError(
+                _('Malware scan could not be completed.'),
+                code='limit_exceeded_{}'.format(reason.lower())
+            )
+        # Otherwise the file is infected with malware.
         raise ValidationError(_('File is infected with malware.'), code='infected')
     # Return file pointer at initial state
     file.seek(0)
